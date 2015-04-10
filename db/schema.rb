@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408090550) do
+ActiveRecord::Schema.define(version: 20150409064202) do
 
   create_table "activities", force: :cascade do |t|
-    t.string   "new"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "message_type"
+    t.integer  "target_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "answers", force: :cascade do |t|
@@ -62,12 +63,6 @@ ActiveRecord::Schema.define(version: 20150408090550) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -75,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150408090550) do
     t.integer  "role"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "remember_digest"
   end
 
   create_table "words", force: :cascade do |t|
