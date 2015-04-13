@@ -19,6 +19,20 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def logged_in_user
+    unless logged_in?
+      store_location
+      redirect_to login_path, notice: "Please sign in."
+    end
+  end
+
+  def admin_user
+    unless current_user.is_admin?
+      flash[:danger] = "You don't have right"
+      redirect_to root_path
+    end
+  end
+
   def remember user
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -34,6 +48,10 @@ module SessionsHelper
   def log_out
     session.delete :user_id
     @current_user = nil
+  end
+
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
   end
 
 end
