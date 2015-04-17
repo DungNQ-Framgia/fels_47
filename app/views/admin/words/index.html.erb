@@ -1,0 +1,24 @@
+<% provide(:title, "Words") %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-left"><%= @category.name %></h1>
+    <%= link_to 'New', new_admin_category_word_path, class: "btn btn-primary" %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="col-md-1">#</th>
+        <th class="col-md-3">Word</th>
+        <th class="col-md-2">Ans1</th>
+        <th class="col-md-2">Ans2</th>
+        <th class="col-md-2">Ans3</th>
+        <th class="col-md-2">Ans4</th>
+        <th class="col-md-1">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render @words %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

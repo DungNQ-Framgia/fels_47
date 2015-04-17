@@ -1,0 +1,22 @@
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for [:admin, @category, @word] do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+
+    <%= f.label :text %>
+    <%= f.text_field :text, class: "form-control" %>
+
+    <%= f.label :answers %>
+    <div class="form-group">
+      <%= f.fields_for :answers do |form_render| %>
+        <div class="col-md-8">
+          <%= form_render.text_field :text, class: "form-control" %>
+        </div>
+        <div class="col-md-1">
+          <%= form_render.check_box :correct, class: "answered" %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

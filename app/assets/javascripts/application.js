@@ -15,3 +15,13 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(function()
+{
+  var answer_checkbox = $(".answered");
+  answer_checkbox.click(function()
+  {
+    answer_checkbox.prop("checked", false);
+    $(this).prop("checked", true);
+  });
+})
