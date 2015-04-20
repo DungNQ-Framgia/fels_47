@@ -6,7 +6,17 @@ Rails.application.routes.draw do
   get 'login'  => 'sessions#new'
   post 'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users, only: [:new, :create, :show]
+  
+  resources :users
+  resources :categories, only: [:index, :show] do
+    resources :lessons, only: [:create, :new]
+    end 
+  resources :lessons, only: [:index, :show] do
+    resource :results, only: [:create, :new]
+  end
+  resources :categories
+  resources :lessons, only: [:index, :show]
+  resources :results, only: [:index, :show]
 
   namespace :admin do
     root 'categories#index'

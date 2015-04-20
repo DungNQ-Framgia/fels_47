@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417044523) do
+ActiveRecord::Schema.define(version: 20150420005617) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "message_type"
@@ -35,10 +35,18 @@ ActiveRecord::Schema.define(version: 20150417044523) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "learned_words", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "word_id"
+    t.boolean  "learned"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"
-    t.integer  "type"
+    t.integer  "lesson_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -59,6 +67,12 @@ ActiveRecord::Schema.define(version: 20150417044523) do
     t.integer  "lesson_id"
     t.string   "content"
     t.integer  "mark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

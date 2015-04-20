@@ -1,5 +1,6 @@
 class Word < ActiveRecord::Base
   has_many :answers
+  has_many :learned_words
   belongs_to :category
 
   accepts_nested_attributes_for :answers

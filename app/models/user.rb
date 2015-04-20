@@ -12,9 +12,11 @@ class User < ActiveRecord::Base
 
   has_many :results
   has_many :lessons
+  has_many :learned_words
 
   accepts_nested_attributes_for :results
   accepts_nested_attributes_for :lessons
+  accepts_nested_attributes_for :learned_words
   
   has_secure_password
 

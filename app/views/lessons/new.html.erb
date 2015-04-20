@@ -1,0 +1,16 @@
+<h1><%= @category.name %></h1>
+<%= form_for :lesson, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <% @words.each do |word| %>
+      <div class="row"><%= word.text %></div>
+      <div class="row">
+        <div  >
+          <%= collection_radio_buttons(:answer, word.id, word.answers, :id, :text) do |b| %>
+          <%= b.label(class: "radio-inline") { b.radio_button + b.text } %>
+          <% end %>
+        </div>
+      </div>
+    <br/>
+  <% end %>
+  <%= f.hidden_field :type, value: @type %> 
+  <input type="submit" class="btn btn-primary" value="Submit"></input>
+<% end %>
